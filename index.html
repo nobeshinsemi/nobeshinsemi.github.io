@@ -1,1 +1,425 @@
-iuiyuyi
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    alert('javaScript exec')
+  </script>
+  <title>〇〇個別指導塾 | 地域密着・圧倒的合格実績</title>
+  <!-- Google Fonts: Noto Sans JP -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* ------------------------------------
+       基本設定・変数
+    ------------------------------------ */
+    :root {
+      --primary-color: #1E3A8A;   /* メイン：ネイビー */
+      --secondary-color: #2563EB; /* サブ：ロイヤルブルー */
+      --accent-color: #F97316;    /* アクセント：オレンジ */
+      --text-color: #1F2937;      /* 文字色：ダークグレー */
+      --bg-light: #F8FAFC;        /* 背景用ライトグレー */
+      --white: #FFFFFF;
+      --font-main: 'Noto Sans JP', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-main);
+      color: var(--text-color);
+      line-height: 1.7;
+      background-color: var(--white);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ------------------------------------
+       ヘッダー（固定表示）
+    ------------------------------------ */
+    .header {
+      position: sticky;
+      top: 0;
+      background-color: var(--white);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      z-index: 1000;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-list {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .nav-list a {
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+
+    .nav-list a:hover {
+      color: var(--secondary-color);
+    }
+
+    .btn-header {
+      background-color: var(--accent-color);
+      color: var(--white);
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: opacity 0.3s;
+    }
+
+    .btn-header:hover {
+      opacity: 0.9;
+    }
+
+    /* ------------------------------------
+       ファーストビュー（ヒーローエリア）
+    ------------------------------------ */
+    .hero {
+      background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+      padding: 60px 20px;
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: 2.2rem;
+      color: var(--primary-color);
+      line-height: 1.3;
+      margin-bottom: 15px;
+    }
+
+    .hero-text p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      color: #4B5563;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn-cta-main {
+      background-color: var(--accent-color);
+      color: var(--white);
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 1rem;
+      box-shadow: 0 4px 14px rgba(249, 115, 22, 0.4);
+      transition: transform 0.2s;
+    }
+
+    .btn-cta-secondary {
+      background-color: var(--primary-color);
+      color: var(--white);
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: transform 0.2s;
+    }
+
+    .btn-cta-main:hover, .btn-cta-secondary:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    /* ------------------------------------
+       共通セクションスタイル
+    ------------------------------------ */
+    section {
+      padding: 70px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 4px;
+      background-color: var(--accent-color);
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    /* ------------------------------------
+       特徴・選ばれる理由
+    ------------------------------------ */
+    .features {
+      background-color: var(--white);
+    }
+
+    .features-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .feature-card {
+      background-color: var(--bg-light);
+      padding: 30px;
+      border-radius: 12px;
+      border: 1px solid #E2E8F0;
+      text-align: center;
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.3rem;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+
+    /* ------------------------------------
+       コース・料金案内
+    ------------------------------------ */
+    .courses {
+      background-color: var(--bg-light);
+    }
+
+    .course-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .course-card {
+      background-color: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .course-header {
+      background-color: var(--primary-color);
+      color: var(--white);
+      padding: 15px;
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .course-body {
+      padding: 25px;
+      flex-grow: 1;
+    }
+
+    .course-price {
+      font-size: 1.4rem;
+      color: var(--accent-color);
+      font-weight: 700;
+      margin: 15px 0;
+      text-align: center;
+    }
+
+    /* ------------------------------------
+       フッター
+    ------------------------------------ */
+    .footer {
+      background-color: var(--primary-color);
+      color: var(--white);
+      padding: 40px 20px 20px;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto 30px;
+    }
+
+    .copyright {
+      font-size: 0.85rem;
+      color: #9CA3AF;
+      border-top: 1px solid #374151;
+      padding-top: 20px;
+    }
+
+    /* ------------------------------------
+       レスポンシブ対応 (スマホ用)
+    ------------------------------------ */
+    @media (max-width: 768px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-cta {
+        justify-content: center;
+      }
+
+      .nav-list {
+        display: none; /* 簡易化のためスマホではナビゲーションを非表示に設定 */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header class="header">
+    <div class="header-container">
+      <div class="logo">
+        📖 〇〇個別指導塾
+      </div>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="#features">塾の特徴</a></li>
+          <li><a href="#courses">コース・料金</a></li>
+          <li><a href="#results">合格実績</a></li>
+          <li><a href="#access">アクセス</a></li>
+          <li><a href="#contact" class="btn-header">無料体験申込</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ファーストビュー -->
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-text">
+        <h1>〇〇地域で圧倒的合格実績！<br>一人ひとりに寄り添う個別指導</h1>
+        <p>学ぶ楽しさを知り、未来を切り拓く。お子様の「できた！」を全力でサポートします。</p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn-cta-main">無料体験授業を申し込む</a>
+          <a href="#contact" class="btn-cta-secondary">資料請求・お問合わせ</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <!-- サンプル画像 -->
+        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" alt="授業風景">
+      </div>
+    </div>
+  </section>
+
+  <!-- 特徴・選ばれる理由 -->
+  <section id="features" class="features">
+    <h2 class="section-title">選ばれる3つの特徴</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <h3>完全1対2の個別指導</h3>
+        <p>一人ひとりの理解度に合わせたオーダーメイドカリキュラムで、効率良く成績を伸ばします。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏫</div>
+        <h3>地域中学のテスト対策</h3>
+        <p>近隣の中学校・高校の出題傾向を徹底分析。定期テスト前の集中対策も万全です。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">✍️</div>
+        <h3>集中できる自習環境</h3>
+        <p>授業がない日でも自由に使える個別ブース型の自習室を完備。質問対応もお任せください。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- コース・料金 -->
+  <section id="courses" class="courses">
+    <h2 class="section-title">コース・料金のご案内</h2>
+    <div class="course-grid">
+      <!-- 小学生コース -->
+      <div class="course-card">
+        <div class="course-header">小学生コース</div>
+        <div class="course-body">
+          <p>学習習慣の定着と、中学進学に向けた基礎学力の構築を目指します。</p>
+          <div class="course-price">月額 8,800円〜</div>
+          <p style="font-size: 0.9rem; color: #6B7280; text-align: center;">（週1回 / 国・数・英・理・社）</p>
+        </div>
+      </div>
+      <!-- 中学生コース -->
+      <div class="course-card">
+        <div class="course-header">中学生コース</div>
+        <div class="course-body">
+          <p>定期テストでの点数アップと、志望校合格に向けた高校受験対策を行います。</p>
+          <div class="course-price">月額 14,300円〜</div>
+          <p style="font-size: 0.9rem; color: #6B7280; text-align: center;">（週1回 / 5教科対応）</p>
+        </div>
+      </div>
+      <!-- 高校生コース -->
+      <div class="course-card">
+        <div class="course-header">高校生コース</div>
+        <div class="course-body">
+          <p>学校の評定アップ（推薦対策）から、一般選抜に向けた大学受験指導まで対応。</p>
+          <div class="course-price">月額 17,600円〜</div>
+          <p style="font-size: 0.9rem; color: #6B7280; text-align: center;">（週1回 / 志望校別カリキュラム）</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer class="footer">
+    <div class="footer-content">
+      <h3>〇〇個別指導塾</h3>
+      <p>〒000-0000 東京都〇〇区〇〇1-2-3（〇〇駅 徒歩3分）</p>
+      <p>TEL: 03-1234-5678（受付時間：14:00〜21:00）</p>
+    </div>
+    <div class="copyright">
+      &copy; 2026 〇〇個別指導塾 All Rights Reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
